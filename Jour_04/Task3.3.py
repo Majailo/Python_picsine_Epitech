@@ -31,7 +31,7 @@ alpha = [
     "z",
 ]
 
-
+# Fonction de generation de list avec les index de la clef et du text
 def code(key, txt, alpha):
     index_key = []
     index_txt = []
@@ -44,30 +44,44 @@ def code(key, txt, alpha):
     print(index_key)
 
     compteur = 0
+    combo=[]
+    
     for elm in index_txt:
-        if compteur <= len(key) + 1:
-            combo = [elm, index_key[compteur]]
-            print(combo)
+
+        if compteur >= len(key)-1:
+            compteur= 0
+            combo.append([elm, index_key[compteur]])
 
         else:
-            compteur = 0
-        compteur += 1
+            combo.append([elm, index_key[compteur]])
+            
+        compteur+=1
+
+    return combo
 
 
-def generator(combo):
-    n_alpha = []  # nouvelle alphabet pour la colone text
-    for idx_l in range(combo[0], 26):
-        n_alpha.append(alpha[idx_l])
-    for idx_l in range(0, combo[0]):
-        n_alpha.append(alpha[idx_l])
+# fonction generation de d'alphabet par index
+def generator(key,txt,alpha):
+    secret=[]
+
+    combo = code(key,txt,alpha)
+    for elm in combo: # gener un nouveau alphabet sur la base du text
+        n_alpha = []  # nouvelle alphabet pour la colonne text
+                
+        for idx_l in range(elm[0], 26):
+            n_alpha.append(alpha[idx_l])
+
+        for idx_l in range(0, elm[0]):
+            n_alpha.append(alpha[idx_l])
+        
+        secret.append(n_alpha[elm[1]])
+        
+    
+    print("".join(secret))
 
     # on a plus qu'a prendre la valeur de la cle pour avoir la lettre
-    return n_alpha[combo[1]]
-
-    print(n_alpha)
+    #print (n_alpha[elm[1]]) #
 
 
-print(generator([12, 8]))
 
-
-code("abba", "ciel", alpha)
+generator("abba","ciel",alpha)
