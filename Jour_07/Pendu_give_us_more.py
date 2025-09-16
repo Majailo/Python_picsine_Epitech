@@ -1,9 +1,7 @@
 # Pendu
 import random
 from english_words import get_english_words_set
-#import datetime
 import time
-
 
 
 def score(x):
@@ -121,16 +119,6 @@ def hangman():
         penalty, l_found = match(user_tent,word,penalty,l_found)
         
 
-        
-        #print(time)
-        #if (time) > 23 :
-            #print (" temp superieur à 23")
-        
-        """
-        if nb_found(l_found, word) == len(word):
-            print( " ### You Hack the word ### ")
-            exit()
-        """
     print("")
     print("#### Game Over ####" )
     
