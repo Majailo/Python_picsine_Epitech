@@ -2,7 +2,7 @@
 import random
 from english_words import get_english_words_set
 import time
-
+import os
 
 def score(x):
     if x >= 12:
@@ -91,6 +91,7 @@ def pendu ():
 """ 
 
 def hangman():
+    os.system("clear")
     l_found=[]
     penalty=0
     print( "Welcom to hangman game.....")
@@ -102,7 +103,7 @@ def hangman():
     word = engl(len_word)
     #word= "abba"
     print("---------------------- Game Start ------------------------")
-    print(word)
+    #print(word)
     start= time.time()
     t=0
 
