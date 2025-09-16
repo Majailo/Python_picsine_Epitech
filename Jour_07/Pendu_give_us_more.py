@@ -1,7 +1,8 @@
 # Pendu
 import random
 from english_words import get_english_words_set
-import datetime
+#import datetime
+import time
 
 
 
@@ -97,22 +98,29 @@ def hangman():
     print( "Welcom to hangman game.....")
     len_word=int(input("please chose your difficulty of the word. number of letter :  "))
     max_penalty=int(input(" Now chose you number of life : "))
+    max_time= int(input ("Chose a time game in second !"))
 
 
     word = engl(len_word)
     #word= "abba"
     print("---------------------- Game Start ------------------------")
     print(word)
-    start= datetime.datetime.now()
+    start= time.time()
+    t=0
 
-    while penalty<=max_penalty :
+    while penalty<=max_penalty and t < max_time:
         underscore(word, l_found) # affiche des _ si la lettre ne sont pas trouvé
         print(f"  {penalty} Penalty")
         print("")
+        t = time.time() - start
+        if max_time-t < 20 :
+            print(" Je voudrais pas de presser mais il te reste moins de 20 sec ! Après je dis ça, je dis rien  ")
+            print("")
+
         user_tent=input("Send your letter or word :  ").lower()
         penalty, l_found = match(user_tent,word,penalty,l_found)
+        
 
-        time = datetime.datetime.now() - start
         
         #print(time)
         #if (time) > 23 :
