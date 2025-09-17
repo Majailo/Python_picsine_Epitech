@@ -1,5 +1,5 @@
 import pygame
-import Pendu_give_us_more
+#import Pendu_give_us_more
 
 pygame.init()
 
@@ -10,7 +10,9 @@ pygame.display.set_caption("The Hangman") # titre du la fenetre
 police = pygame.font.SysFont('Arial', 70, False, True) # style d'ecriture pour le jeu
 
 z_txt= police.render("txt" ,True,Blanc)
-txt_zone=police.get_rect(250,450) # objet de la zone de txt
+#txt_zone=police.get_rect(250,450) # objet de la zone de txt
+
+
 
 def manstick():
 
@@ -49,14 +51,14 @@ while run:
         if ev.type == pygame.QUIT: # passe a false le ev.type pour quiter la fenetre sur demande
             run = False
             
-        ecran.blit()
-        
+        #ecran.blit()
+        """
         if ev.type == pygame.KEYDOWN:
                 print("Le code généré est le suivant : ")
                 print("     - event.dict['unicode'] : " + ev.dict['unicode'])
                 print("     - event.key : " + str(ev.key))
                 print("     - pygame.key.name(event.key) : " + pygame.key.name(ev.key))
-
+        """
             
     pygame.display.flip()
 
