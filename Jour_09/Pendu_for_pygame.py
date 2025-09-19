@@ -12,6 +12,17 @@ def score(x):
     return True
 
 
+def fr_word(long):
+
+    rm = 0
+    with open("mots_pendu.txt", "r") as f:
+        mots_fr = f.readlines()  # la liste de mot dans le txt
+
+    while len(rm) != long:
+        rm = random.choice(mots_fr)
+    return rm
+
+
 def engl(long):
     rm = ""
     # english_words
