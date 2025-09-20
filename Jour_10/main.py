@@ -3,6 +3,8 @@ import Pendu_for_pygame
 import string
 
 pygame.init()
+hang = Pendu_for_pygame.Handgame()
+
 
 ecran = pygame.display.set_mode((900, 600))
 image = pygame.image.load("Black_bord_resized.png").convert()  # charge l image de fond
@@ -20,7 +22,7 @@ police_crai2 = pygame.font.Font("Neat_Chalk.ttf", 45)
 len_word = 6
 penalty = 0
 
-word = Pendu_for_pygame.engl(len_word)
+word = hang.word
 
 
 print(word)
@@ -51,8 +53,8 @@ def clear_screen():
 def clean_start(l_aff="", penalty=0, winner=False, loser=False):
     clear_screen()
     l_aff = []
-    l_aff, penalty, winner, loser = Pendu_for_pygame.hangman(
-        l_tuch[-1], l_tuch, penalty, word
+    l_aff, penalty, winner, loser = hang.hangman(
+        l_tuch[-1], l_tuch
     )  # on lance le jeux et on alimente avec le text du joueur
 
     out_of_txt(l_aff, 500, 500, police_crai)
@@ -172,9 +174,7 @@ while run:
                 # recupartion de lettre unique taper par l utilisateur
 
                 # envoie des données au hangman
-                l_aff, penalty, winner, loser = Pendu_for_pygame.hangman(
-                    l_tuch[-1], l_tuch, penalty, word
-                )
+                l_aff, penalty, winner, loser = hang.hangman(l_tuch[-1], l_tuch)
 
                 # on lance le jeux et on alimente avec le text du joueur
 

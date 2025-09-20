@@ -5,11 +5,11 @@ import time
 import os
 
 
+l_try = []
+
+
 def score(x):
-    if x >= 12:
-        print("You loose!")
-        return False
-    return True
+    return x >= 12
 
 
 def fr_word(long):
@@ -34,7 +34,8 @@ def engl(long):
     return rm
 
 
-def underscore(txt, l_found):
+"""
+def underscore1(txt, l_found):
     l_aff = []
     for l in txt:  # verifier chaque lettre dans le mot
         if l in l_found:  # si la lettre est dans le l_found
@@ -42,13 +43,30 @@ def underscore(txt, l_found):
         else:
             l_aff.append("_")
     return l_aff  # retourne une liste de lettre avec le ou _
+"""
+
+
+def underscore(txt, l_found):
+    l_aff = []
+    for l in txt:  # verifier chaque lettre dans le mot
+        l_aff.append(l if l in l_found else "_")  # si la lettre est dans le l_found
+    return l_aff  # retourne une liste de lettre avec le ou _
+
+
+"""
+def nb_found2(l_found, word):
+    nb = 0
+    for elm in word:
+        if elm in l_found:
+            nb += 1
+    return nb
+"""
 
 
 def nb_found(l_found, word):
     nb = 0
     for elm in word:
-        if elm in l_found:
-            nb += 1
+        nb += 1 if elm in l_found else nb
     return nb
 
 
@@ -114,6 +132,18 @@ def pendu ():
 """
 
 
+def letter_try(l):
+    if l not in l_try:
+        l_try.append(l)
+    return l_try
+
+
+"""
+def letter_try1(l):
+    return l_try.append(l if l not in l_try else "")
+"""
+
+
 def hangman(ev_key, l_found, penalty, word):
     winner = False
     loser = False
@@ -121,6 +151,7 @@ def hangman(ev_key, l_found, penalty, word):
     max_penalty = 13
 
     if penalty < max_penalty:  # and t < max_time:
+        # letter_try(l_aff)
         l_aff = underscore(word, l_found)
         # affiche des _ si la lettre ne sont pas trouvé
         # main2.out_of_txt("".join(l_aff),550,100,police)

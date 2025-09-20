@@ -7,16 +7,13 @@ def fr_word(long):
     with open("mots_pendu.txt", "r") as f:
         mots_fr = f.readlines()  # la liste de mot dans le txt
 
-    for elm in mots_fr:
-        l_fr.append(elm=elm[-2:-1])
 
-    print(l_fr)
+# fr_word(6)
 
 
-"""
-    while len(rm) != long:
-        rm = random.choice(mots_fr)
-    return rm
-"""
+ligne = ["" for _ in range(3)]  # gener que des espace
 
-(fr_word(6))
+morpion = [ligne for _ in range(3)]
+
+morpion[1][1] = "0"  # on modifie la ligne dans morpion donc c'est ligne qui est modifié
+# on modifi l objet ligne qui est reproduit plusieur fois a l affichage

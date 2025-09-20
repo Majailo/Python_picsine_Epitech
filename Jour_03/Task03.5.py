@@ -354,7 +354,6 @@ def conca():  # recupere tous les types de lettre possible dans les differentes 
     return key_sec
 
 
-# faire un disctionnaire inversé avec comme clef le score et la lettre
 def find_recu(txt):
     l = conca()
     # dico = {txt.count(letter)/(len(txt))*100:letter for letter in l}
@@ -368,21 +367,19 @@ def find_recu(txt):
 def find_lang(t):
     final = []
     key_prim = [elm for elm in LANGUAGE_PROFILES]
-    dico = find_recu(
-        t
-    )  # retour de l'analyse du text avec les frequence en % par caractere
+    dico = find_recu(t)
+    # retour de l'analyse du text avec les frequence en % par caractere
     for lang in key_prim:
         score = 0
         for lettre in LANGUAGE_PROFILES[lang]:
             i = LANGUAGE_PROFILES[lang][lettre]
-            score += abs(
-                i - dico[lettre]
-            )  # on calcul de delta entre les difference de lettre pour obtenir un score global d'écart
+            score += abs(i - dico[lettre])
+            # on calcul de delta entre les difference de lettre pour obtenir un score global d'écart
 
         final.append([lang, score])
     print(final)
     match = ""
-    old = final[0][1]  # valeur initialisé à la 1er itéraation du dico fourni
+    old = final[0][1]  # valeur initialisé à la 1er itération du dico fourni
     for elm in final:
 
         if elm[1] <= old:
