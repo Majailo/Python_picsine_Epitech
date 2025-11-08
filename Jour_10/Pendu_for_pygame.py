@@ -24,7 +24,7 @@ class Handgame:
     def fr_word(self):  # dictionnaire fr
         rm = ""
         with open("mots_pendu.txt", "r") as f:
-            mots_fr = f.readlines()  # la liste de mot dans le txt
+            mots_fr = [m.strip() for m in f.readlines()]   # la liste de mot dans le txt
 
         while len(rm) != self.long:
             rm = random.choice(mots_fr)
@@ -71,8 +71,8 @@ class Handgame:
                 self.winner = True
                 return self.penalty, self.l_found, self.winner
 
-            else:
-                self.penalty += 5
+            # else:
+            #     self.penalty += 5
         return self.penalty, self.l_found, self.winner
 
     # underscore("abcd")
